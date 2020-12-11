@@ -1,0 +1,59 @@
+{% extends 'hospitais/base.html' %} {% block content %}
+<div>
+  <h1>Editar postagem</h1>
+  <hr />
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="fieldWrapper">
+      {{ form.nome_hospital.errors }}
+      <label for="{{ form.nome_hospital.id_for_label }}">Título:</label> <br />
+      {{ form.nome_hospital }}
+    </div>
+
+    <div class="fieldWrapper">
+      {{ form.desc_hospital.errors }}
+      <label for="{{ form.nome_hospital.id_desc_hospital }}">Descrição:</label><br />
+      {{ form.desc_hospital }}
+    </div>
+
+    <figure>
+      <img src="{{post.foto_url}}" class="image" alt="" srcset="" />
+    </figure>
+    <div class="fieldWrapper">
+      {{ form.foto.errors }}
+      <label for="{{ form.foto.id_foto }}">Foto:</label>
+      {{ form.foto }}
+    </div>
+
+    {% comment %}
+    <p>
+      <label for="id_tipo_hospital">Tipo hospital:</label>
+      <input
+        type="text"
+        name="tipo_hospital"
+        value="público"
+        maxlength="200"
+        required=""
+        id="id_tipo_hospital"
+      />
+    </p>
+    {% endcomment %} {% comment %}
+    <p>
+      <label for="id_conceito_hospital">Conceito hospital:</label>
+      <input
+        type="text"
+        name="conceito_hospital"
+        value="teste"
+        maxlength="200"
+        required=""
+        id="id_conceito_hospital"
+      />
+    </p>
+    {% endcomment %}
+    <hr />
+    <button class="btn btn-danger" type="submit">Enviar</button>
+  </form>
+  <a href="{% url 'blog' %}">Voltar</a>
+</div>
+{% endblock content %}
